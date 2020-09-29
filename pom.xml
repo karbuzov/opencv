@@ -63,12 +63,12 @@
             <systemPath>D:/opencv/build/java/opencv-440.jar</systemPath>
         </dependency>
 
-<!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.openjfx/javafx-swing &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>org.openjfx</groupId>-->
-<!--            <artifactId>javafx-swing</artifactId>-->
-<!--            <version>16-ea+2</version>-->
-<!--        </dependency>-->
+        <!-- https://mvnrepository.com/artifact/org.openjfx/javafx-swing -->
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-swing</artifactId>
+            <version>15</version>
+        </dependency>
 
 
         <dependency>

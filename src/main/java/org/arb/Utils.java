@@ -3,6 +3,7 @@ package main.java.org.arb;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;
 
+import javafx.embed.swing.SwingFXUtils;
 import org.opencv.core.Mat;
 
 import javafx.application.Platform;
@@ -32,14 +33,13 @@ public final class Utils
     {
         try
         {
-//            return SwingFXUtils.toFXImage(matToBufferedImage(frame), null);
+            return SwingFXUtils.toFXImage(matToBufferedImage(frame), null);
         }
         catch (Exception e)
         {
             System.err.println("Cannot convert the Mat object: " + e);
             return null;
         }
-        return null;
     }
 
     /**
