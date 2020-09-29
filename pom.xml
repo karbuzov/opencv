@@ -56,6 +56,22 @@
         </dependency>
 
         <dependency>
+            <groupId>org.opencv</groupId>
+            <artifactId>opencv</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>D:/opencv/build/java/opencv-440.jar</systemPath>
+        </dependency>
+
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.openjfx/javafx-swing &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.openjfx</groupId>-->
+<!--            <artifactId>javafx-swing</artifactId>-->
+<!--            <version>16-ea+2</version>-->
+<!--        </dependency>-->
+
+
+        <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-graphics</artifactId>
             <version>13</version>

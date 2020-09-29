@@ -7,10 +7,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import main.java.org.arb.OpenCvTest;
 
 public class App extends Application {
 
+    private static OpenCvTest openCvTest;
+
     public static void main(String[] args) {
+        openCvTest = new OpenCvTest();
         launch(args);
     }
 
@@ -18,6 +22,12 @@ public class App extends Application {
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Hello World!");
         Button btn = new Button();
+        String res = "ok";
+        try {
+            openCvTest.test();
+        } catch (Exception e) {
+            res = e.getMessage();
+        }
 
 
         btn.setText("Say 'Hello World'");
@@ -25,12 +35,19 @@ public class App extends Application {
 
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("Hello World!");
+                String res = "ok";
+                try {
+                    openCvTest.test();
+                } catch (Exception e) {
+                    res = e.getMessage();
+                }
+                System.out.println(res);
             }
         });
 
         StackPane root = new StackPane();
         root.getChildren().add(btn);
         primaryStage.setScene(new Scene(root, 300, 250));
+        primaryStage.setTitle("Face Detection and Tracking");
         primaryStage.show();
     }}
