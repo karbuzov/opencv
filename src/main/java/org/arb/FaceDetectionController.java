@@ -1,4 +1,4 @@
-package main.java.org.arb;
+package org.arb;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;

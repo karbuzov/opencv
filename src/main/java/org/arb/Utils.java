@@ -1,4 +1,4 @@
-package main.java.org.arb;
+package org.arb;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;

@@ -1,9 +1,8 @@
-package main.java.org.arb;
+package org.arb;
 
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.imgcodecs.Imgcodecs;
-import org.opencv.imgproc.Imgproc;
 
 public class OpenCvTest {
     public OpenCvTest() {
@@ -37,7 +36,7 @@ public class OpenCvTest {
     public void aaa(Mat image)
     {
         System.out.println("1=====================");
-        main.java.org.arb.FaceDetectionController detection = new main.java.org.arb.FaceDetectionController();
+        org.arb.FaceDetectionController detection = new org.arb.FaceDetectionController();
         System.out.println("2=====================");
         detection.init();
         System.out.println("3=====================");
