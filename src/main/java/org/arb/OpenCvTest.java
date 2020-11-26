@@ -1,8 +1,5 @@
 package main.java.org.arb;
 
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.imgcodecs.Imgcodecs;
@@ -28,17 +25,23 @@ public class OpenCvTest {
 
         // Converting the image to gray scale and
         // saving it in the dst matrix
-        Imgproc.cvtColor(source, destination, Imgproc.COLOR_RGB2GRAY);
+//        Imgproc.cvtColor(source, destination, Imgproc.COLOR_RGB2GRAY);
 
         // Writing the image
-        Imgcodecs.imwrite("C:\\Users\\arbuzov\\Downloads\\grayIMG_20200823_112141.jpg", destination);
-        System.out.println("The image is successfully to Grayscale");
-        aaa();
+//        Imgcodecs.imwrite("C:\\Users\\arbuzov\\Downloads\\grayIMG_20200823_112141.jpg", destination);
+//        System.out.println("The image is successfully to Grayscale");
+        aaa(source);
         return "ok";
     }
 
-    public void aaa()
+    public void aaa(Mat image)
     {
-
+        System.out.println("1=====================");
+        main.java.org.arb.FaceDetectionController detection = new main.java.org.arb.FaceDetectionController();
+        System.out.println("2=====================");
+        detection.init();
+        System.out.println("3=====================");
+        detection.detectAndDisplay(image);
+        System.out.println("4=====================");
     }
 }

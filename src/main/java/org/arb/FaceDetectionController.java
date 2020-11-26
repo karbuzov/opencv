@@ -67,9 +67,9 @@ public class FaceDetectionController
         this.absoluteFaceSize = 0;
 
         // set a fixed width for the frame
-        originalFrame.setFitWidth(600);
+//        originalFrame.setFitWidth(600);
         // preserve image ratio
-        originalFrame.setPreserveRatio(true);
+//        originalFrame.setPreserveRatio(true);
     }
 
     /**
@@ -174,7 +174,7 @@ public class FaceDetectionController
      * @param frame
      *            it looks for faces in this frame
      */
-    private void detectAndDisplay(Mat frame)
+    public void detectAndDisplay(Mat frame)
     {
         MatOfRect faces = new MatOfRect();
         Mat grayFrame = new Mat();
@@ -188,15 +188,16 @@ public class FaceDetectionController
         if (this.absoluteFaceSize == 0)
         {
             int height = grayFrame.rows();
-            if (Math.round(height * 0.2f) > 0)
+            if (Math.round(height * 0.1f) > 0)
             {
-                this.absoluteFaceSize = Math.round(height * 0.2f);
+                this.absoluteFaceSize = Math.round(height * 0.1f);
             }
         }
 
         // detect faces
-        this.faceCascade.detectMultiScale(grayFrame, faces, 1.1, 2, 0 | Objdetect.CASCADE_SCALE_IMAGE,
-                new Size(this.absoluteFaceSize, this.absoluteFaceSize), new Size());
+        this.faceCascade.detectMultiScale(grayFrame, faces, 1.1,
+                2, 0 | Objdetect.CASCADE_SCALE_IMAGE,
+                new Size(this.absoluteFaceSize, this.absoluteFaceSize));
 
         // each rectangle in faces is a face: draw them!
         Rect[] facesArray = faces.toArray();

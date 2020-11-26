@@ -27,6 +27,7 @@ public class App extends Application {
             openCvTest.test();
         } catch (Exception e) {
             res = e.getMessage();
+            System.err.println(res);
         }
 
 
