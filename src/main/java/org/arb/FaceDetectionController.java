@@ -202,9 +202,12 @@ public class FaceDetectionController
 
         // each rectangle in faces is a face: draw them!
         Rect[] facesArray = faces.toArray();
-        for (int i = 0; i < facesArray.length; i++)
-            Imgproc.rectangle(frame, facesArray[i].tl(), facesArray[i].br(), new Scalar(0, 255, 0), 3);
+        for (int i = 0; i < facesArray.length; i++) {
 
+            Imgproc.rectangle(frame, facesArray[i].tl(), facesArray[i].br(),
+                    new Scalar(0, 255, 0), 3);
+
+        }
     }
 
     /**
