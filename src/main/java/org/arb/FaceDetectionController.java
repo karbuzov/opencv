@@ -183,6 +183,7 @@ public class FaceDetectionController
         Imgproc.cvtColor(frame, grayFrame, Imgproc.COLOR_BGR2GRAY);
         // equalize the frame histogram to improve the result
         Imgproc.equalizeHist(grayFrame, grayFrame);
+        faceCascade.load("D:\\opencv\\sources\\data\\haarcascades_cuda\\haarcascade_frontalface_default.xml");
 
         // compute minimum face size (20% of the frame height, in our case)
         if (this.absoluteFaceSize == 0)

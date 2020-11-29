@@ -20,7 +20,7 @@ public class OpenCvTest {
         Mat source = Imgcodecs.imread(input);
 
         // Creating the empty destination matrix
-        Mat destination = new Mat();
+        //Mat destination = new Mat();
 
         // Converting the image to gray scale and
         // saving it in the dst matrix
