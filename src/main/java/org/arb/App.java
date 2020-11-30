@@ -11,11 +11,15 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import org.arb.db.SQLite;
+
+import java.sql.SQLException;
 
 
 public class App extends Application {
 
     private static OpenCvTest openCvTest;
+    private SQLite sqLiteDB;
 
     public static void main(String[] args) {
         openCvTest = new OpenCvTest();
@@ -24,6 +28,20 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+        createUI(primaryStage);
+
+        sqLiteDB = new SQLite();
+        sqLiteDB.connect("jdbc:sqlite:D:/projects/java/opencv/sqlite.db");
+
+        try {
+            sqLiteDB.createNewTable();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        schedule();
+    }
+
+    private void createUI(Stage primaryStage) {
         primaryStage.setTitle("Hello World!");
         Button btn = new Button();
         String res = "ok";
@@ -34,13 +52,7 @@ public class App extends Application {
 
             @Override
             public void handle(ActionEvent event) {
-                String res = "ok";
-                try {
-                    openCvTest.test();
-                } catch (Exception e) {
-                    res = e.getMessage();
-                }
-                System.out.println(res);
+                takePhoto();
             }
         });
 
@@ -49,21 +61,27 @@ public class App extends Application {
         primaryStage.setScene(new Scene(root, 300, 250));
         primaryStage.setTitle("Face Detection and Tracking");
         primaryStage.show();
-
-        schedule();
     }
 
     private void schedule() {
         Timeline timeline =
                 new Timeline(new KeyFrame(Duration.seconds(30), e -> {
-                    try {
-                        openCvTest.test();
-                    } catch (Exception er) {
-                        System.err.println(er);
-                    }
-                }
-                ));
+                    takePhoto();
+                }));
         timeline.setCycleCount(Animation.INDEFINITE); // loop forever
         timeline.play();
+    }
+
+    private void takePhoto() {
+        try {
+            int facesFound = 0;
+            boolean faceExists = openCvTest.processImage();
+            if (faceExists) {
+                facesFound = 1;
+            }
+            sqLiteDB.insertActivity(facesFound);
+        } catch (Exception er) {
+            System.err.println(er);
+        }
     }
 }

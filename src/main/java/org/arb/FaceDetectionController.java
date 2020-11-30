@@ -154,7 +154,7 @@ public class FaceDetectionController
                 if (!frame.empty())
                 {
                     // face detection
-                    this.detectAndDisplay(frame);
+                    this.getDetectedFaces(frame);
                 }
 
             }
@@ -174,7 +174,7 @@ public class FaceDetectionController
      * @param frame
      *            it looks for faces in this frame
      */
-    public void detectAndDisplay(Mat frame)
+    public Rect[] getDetectedFaces(Mat frame)
     {
         MatOfRect faces = new MatOfRect();
         Mat grayFrame = new Mat();
@@ -201,13 +201,7 @@ public class FaceDetectionController
                 new Size(this.absoluteFaceSize, this.absoluteFaceSize));
 
         // each rectangle in faces is a face: draw them!
-        Rect[] facesArray = faces.toArray();
-        for (int i = 0; i < facesArray.length; i++) {
-
-            Imgproc.rectangle(frame, facesArray[i].tl(), facesArray[i].br(),
-                    new Scalar(0, 255, 0), 3);
-
-        }
+        return faces.toArray();
     }
 
     /**

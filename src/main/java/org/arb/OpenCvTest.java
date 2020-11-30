@@ -2,13 +2,16 @@ package org.arb;
 
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
+import org.opencv.core.Rect;
+import org.opencv.core.Scalar;
 import org.opencv.imgcodecs.Imgcodecs;
+import org.opencv.imgproc.Imgproc;
 
 public class OpenCvTest {
     public OpenCvTest() {
     }
 
-    public String test() throws Exception {
+    public boolean processImage() throws Exception {
 //        System.load("D:\\opencv\\build\\java\\x64\\opencv_java440.dll");
 //        System.load("D:\\opencv\\build\\java\\opencv-440.jar");
 
@@ -29,18 +32,21 @@ public class OpenCvTest {
         // Writing the image
 //        Imgcodecs.imwrite("C:\\Users\\arbuzov\\Downloads\\grayIMG_20200823_112141.jpg", destination);
 //        System.out.println("The image is successfully to Grayscale");
-        aaa(source);
-        return "ok";
+        return isFaceExists(source);
     }
 
-    public void aaa(Mat image)
+    public boolean isFaceExists(Mat image)
     {
-        System.out.println("1=====================");
         org.arb.FaceDetectionController detection = new org.arb.FaceDetectionController();
-        System.out.println("2=====================");
         detection.init();
-        System.out.println("3=====================");
-        detection.detectAndDisplay(image);
-        System.out.println("4=====================");
+        Rect[] facesArray = detection.getDetectedFaces(image);
+
+        for (int i = 0; i < facesArray.length; i++) {
+
+//            Imgproc.rectangle(image, facesArray[i].tl(), facesArray[i].br(),
+//                    new Scalar(0, 255, 0), 3);
+            return true;
+        }
+        return false;
     }
 }
