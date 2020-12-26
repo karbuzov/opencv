@@ -64,18 +64,18 @@ public class App extends Application {
     }
 
     private void schedule() {
-        Timeline timeline =
-                new Timeline(new KeyFrame(Duration.seconds(30), e -> {
-                    takePhoto();
-                }));
-        timeline.setCycleCount(Animation.INDEFINITE); // loop forever
-        timeline.play();
+//        Timeline timeline =
+//                new Timeline(new KeyFrame(Duration.seconds(30), e -> {
+//                    takePhoto();
+//                }));
+//        timeline.setCycleCount(Animation.INDEFINITE); // loop forever
+//        timeline.play();
     }
 
     private void takePhoto() {
         try {
             int facesFound = 0;
-            boolean faceExists = openCvTest.processImage();
+            boolean faceExists = openCvTest.processImage2();
             if (faceExists) {
                 facesFound = 1;
             }
